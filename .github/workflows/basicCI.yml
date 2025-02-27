@@ -37,7 +37,6 @@ jobs:
 
       - uses: Azure/login@v2.2.0
         with:
-          creds: ARM_CLIENT_SECRET
           client-id: ARM_CLIENT_ID
           # TenantId of the Azure Service principal created.
           tenant-id: ARM_TENANT_ID
