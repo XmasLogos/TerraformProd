@@ -24,6 +24,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    environment: Prod
     defaults:
       run:
         working-directory: ./TerraTest
