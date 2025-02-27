@@ -11,9 +11,6 @@ terraform {
     storage_account_name = "xstoragesea001"
     container_name       = "terraform-state"
     key                  = "terraform.tfstate"
-    lock {
-      enabled = true
-    }
   }
 }
 
