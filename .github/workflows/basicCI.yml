@@ -29,13 +29,13 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ../../Terra-Test
+        working-directory: ./
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - uses: hashicorp/setup-terraform@v2.0.3
+      - uses: hashicorp/setup-terraform@v3.1.2
 
       - name: Terraform Init
         id: init
@@ -53,11 +53,11 @@ jobs:
         continue-on-error: false
 
       # Save plan to artifacts
-      - name: Publish Terraform Plan
-        uses: actions/upload-artifact@v4
-        with:
-          name: tfplan
-          path: tfplan
+      # - name: Publish Terraform Plan
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: tfplan
+      #     path: tfplan
 
       # Create string output of Terraform Plan
       - name: Create String Output
