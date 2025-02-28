@@ -1,3 +1,7 @@
+
+data "azurerm_subscription" "current" {
+
+}
 terraform {
   required_version = ">= 1.1.0"
   required_providers {
@@ -11,9 +15,6 @@ terraform {
     storage_account_name = "xstoragesea001"
     container_name       = "terraform-state"
     key                  = "terraform.tfstate"
-    lock {
-      enabled = true
-    }
   }
 }
 
