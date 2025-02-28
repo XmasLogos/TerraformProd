@@ -64,5 +64,5 @@ variable "vm_object" {
 }
 
 variable "subscription_id"{
-  type = "string"
+  type = string
 }
