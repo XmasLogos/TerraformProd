@@ -1,10 +1,7 @@
 name: terraform_github_action
 
 env:
-  ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+  ARM_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
 
 # Controls when the workflow will run
 on:
@@ -24,9 +21,10 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  CI:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    environment: Prod
     defaults:
       run:
         working-directory: ./TerraTest
@@ -35,12 +33,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - uses: hashicorp/setup-terraform@v3.1.2
+      # - uses: Azure/login@v2.2.0
+      #   with:
+      #     creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
+      # - uses: Azure/cli@v2.1.0
+      #   with:
+      #     # Specify the script here
+      #     inlineScript: 'az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}'
+
+      - uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
         id: init
-        run: |
-          terraform init
+        run: terraform init
 
       - name: Terraform Format
         id: fmt

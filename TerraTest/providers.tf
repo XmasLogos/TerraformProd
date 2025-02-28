@@ -1,7 +1,7 @@
+
 # data "azurerm_subscription" "current" {
 
 # }
-
 terraform {
   required_version = ">= 1.1.0"
   required_providers {
