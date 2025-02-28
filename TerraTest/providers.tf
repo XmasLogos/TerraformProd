@@ -1,7 +1,7 @@
 
-# data "azurerm_subscription" "current" {
+data "azurerm_subscription" "current" {
 
-# }
+}
 terraform {
   required_version = ">= 1.1.0"
   required_providers {
@@ -21,4 +21,5 @@ terraform {
 
 provider "azurerm" {
   features{}
+  subscription_id = data.azurerm_subscription.current.subscription_id
 }
