@@ -10,16 +10,14 @@ terraform {
       version = "4.20.0"
     }
   }
-  # backend "azurerm" {
-  #   subscription_id = data.azurerm_subscription.current.subscription_id
-  #   resource_group_name  = "Xmas-Own"
-  #   storage_account_name = "xstoragesea001"
-  #   container_name       = "terraform-state"
-  #   key                  = "terraform.tfstate"
-  # }
+  backend "azurerm" {
+    resource_group_name  = "Xmas-Own"
+    storage_account_name = "xstoragesea001"
+    container_name       = "terraform-state"
+    key                  = "terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
   features{}
-  subscription_id = data.azurerm_subscription.current.subscription_id
 }
